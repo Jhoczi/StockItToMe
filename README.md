@@ -1,0 +1,2 @@
+# StockItToMe
+Warehouse monitoring system
