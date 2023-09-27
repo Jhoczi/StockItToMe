@@ -10,11 +10,3 @@ public class ProductCreatedEvent : BaseEvent
     // // {
     // // }
 }
-
-public class ProductXDEvent : BaseEvent
-{
-    public string TestMessage { get; set; }
-    // public ProductXDEvent() : base(nameof(ProductXDEvent))
-    // {
-    // }
-}

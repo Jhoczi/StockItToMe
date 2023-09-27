@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
@@ -10,11 +10,15 @@
     <ItemGroup>
       <PackageReference Include="MassTransit" Version="8.1.0" />
       <PackageReference Include="MassTransit.RabbitMQ" Version="8.1.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\StockItToMe.Common\StockItToMe.Common.csproj" />
       <ProjectReference Include="..\StockItToMe.Core\StockItToMe.Core.csproj" />
     </ItemGroup>
+
+
 
 </Project>

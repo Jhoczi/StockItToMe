@@ -29,18 +29,18 @@ builder.Services.AddMassTransit(x =>
             h.Username("user");
             h.Password("password");
         });
-
+        
+        cfg.ConfigureEndpoints(context);
+        
         // cfg.Publish<BaseEvent>(y => 
         // {
         //     y.Durable = true;
         // });
         
-        cfg.ConfigureEndpoints(context);
-        
-        cfg.ReceiveEndpoint("warehouse-api-events", e =>
-        {
-            e.Bind<BaseEvent>();
-        });
+        // cfg.ReceiveEndpoint("warehouse-api-events", e =>
+        // {
+        //     e.Bind<BaseEvent>();
+        // });
         
         // cfg.ReceiveEndpoint("product-created-queue", e =>
         // {
