@@ -22,11 +22,13 @@ public class ProductController : ControllerBase
     [HttpPost]
     public async Task<ActionResult> CreateProduct(AddNewProductCommand command)
     {
+        command.Id = Guid.NewGuid();
+        
         var commandResult = await _mediator.Send(command);
         
         return StatusCode(StatusCodes.Status201Created, new CreateProductResponse()
         {
-            
+            Message = commandResult.Message
         });
     }
 }

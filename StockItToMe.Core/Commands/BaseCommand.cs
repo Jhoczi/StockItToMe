@@ -1,4 +1,5 @@
-﻿using StockItToMe.Core.Messages;
+﻿using MediatR;
+using StockItToMe.Core.Messages;
 
 namespace StockItToMe.Core.Commands;
 

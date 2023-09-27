@@ -7,9 +7,15 @@
     </PropertyGroup>
 
 
+    <ItemGroup>
+      <ProjectReference Include="..\StockItToMe.Common\StockItToMe.Common.csproj" />
+      <ProjectReference Include="..\StockItToMe.Core\StockItToMe.Core.csproj" />
+    </ItemGroup>
+
 
     <ItemGroup>
-      <ProjectReference Include="..\StockItToMe.Core\StockItToMe.Core.csproj" />
+      <PackageReference Include="MassTransit" Version="8.1.0" />
+      <PackageReference Include="MassTransit.Kafka" Version="8.1.0" />
     </ItemGroup>
 
 </Project>
