@@ -1,8 +1,10 @@
-﻿namespace StockItToMe.Core.Events;
+﻿using StockItToMe.Core.Entities;
 
-public class BaseEvent
+namespace StockItToMe.Core.Events;
+
+public class BaseEvent : IEntity<Guid>
 {
-    public Guid Id { get; init; }
+    public Guid Id { get; set; }
     public Guid AggregateId { get; init; }
     public int Version { get; init; }
     public DateTime TimeStamp { get; init; } = DateTime.UtcNow;

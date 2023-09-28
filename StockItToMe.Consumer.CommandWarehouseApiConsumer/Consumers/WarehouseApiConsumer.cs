@@ -1,31 +1,24 @@
-﻿using System.Text.Json;
-using MassTransit;
-using StockItToMe.Common.Events;
+﻿using MassTransit;
+using StockItToMe.Core.Entities;
 using StockItToMe.Core.Events;
 
 namespace StockItToMe.Consumer.CommandWarehouseApiConsumer.Consumers;
 
 public class WarehouseApiConsumer : IConsumer<BaseEvent>
 {
-    public Task Consume(ConsumeContext<BaseEvent> context)
+    private readonly ILogger<WarehouseApiConsumer> _logger;
+    private readonly ICommandDataProvider<BaseEvent> _dataProvider;
+
+    public WarehouseApiConsumer(ICommandDataProvider<BaseEvent> dataProvider, ILogger<WarehouseApiConsumer> logger)
     {
-        var eventType = Type.GetType(context.Message.EventType);
+        _dataProvider = dataProvider;
+        _logger = logger;
+    }
 
-        if (eventType == null)
-            throw new ArgumentNullException(nameof(context.Message.EventType),$"The given type is not supported.");
-        
-        var eventData = JsonSerializer.Deserialize(context.Message.Payload, eventType);
-
-        switch (eventData)
-        {
-            case ProductCreatedEvent:
-                Console.WriteLine("TUTAJ MAPUJEMY DO MONGO DLA utworzonego");
-                break;
-            default:
-                Console.WriteLine("Zaden z tych typow");
-                break;
-        }
-        
-        return Task.CompletedTask;
+    public async Task Consume(ConsumeContext<BaseEvent> context)
+    {
+        _logger.LogInformation($"Starting consuming message:{context.Message.Id}");
+        await _dataProvider.Create(context.Message);
+        _logger.LogInformation($"Finished consuming message:{context.Message.Id}");
     }
 }

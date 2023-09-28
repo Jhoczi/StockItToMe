@@ -10,14 +10,19 @@
     <ItemGroup>
       <PackageReference Include="MassTransit" Version="8.1.0" />
       <PackageReference Include="MassTransit.RabbitMQ" Version="8.1.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
       <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+      <PackageReference Include="MongoDB.Bson" Version="2.21.0" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\StockItToMe.Common\StockItToMe.Common.csproj" />
+      <ProjectReference Include="..\StockItToMe.Consumer.CommandWarehouseApiConsumer.Infrastructure\StockItToMe.Consumer.CommandWarehouseApiConsumer.Infrastructure.csproj" />
       <ProjectReference Include="..\StockItToMe.Core\StockItToMe.Core.csproj" />
     </ItemGroup>
+
 
 
 

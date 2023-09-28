@@ -1,10 +1,31 @@
 ﻿using MassTransit;
+using MongoDB.Driver;
 using StockItToMe.Consumer.CommandWarehouseApiConsumer.Consumers;
+using StockItToMe.Consumer.CommandWarehouseApiConsumer.Infrastructure;
+using StockItToMe.Core.Entities;
+using StockItToMe.Core.Events;
 
 var builder = Host.CreateDefaultBuilder();
 
-builder.ConfigureServices(services =>
+builder.ConfigureAppConfiguration((hostingContext, configuration) =>
 {
+    configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+});
+builder.ConfigureServices((hostingContext, services) =>
+{
+    services.AddSingleton<IMongoClient>(_ =>
+    {
+        var mongoClient = new MongoClient(
+            hostingContext.Configuration.GetSection("MongoProviderSettings").GetSection("ConnectionStrings")["Warehouse"]);
+        return mongoClient;
+    });
+    services.AddSingleton<ICommandDataProvider<BaseEvent>, MongoProvider<BaseEvent>>(provider =>
+        new MongoProvider<BaseEvent>(
+            provider.GetRequiredService<IMongoClient>(),
+            hostingContext.Configuration.GetSection("MongoProviderSettings").GetSection("DatabaseNames")["Warehouse"],
+            nameof(BaseEvent)
+        ));
+    
     services.AddMassTransit(x =>
     {
         x.AddConsumer<WarehouseApiConsumer>();
