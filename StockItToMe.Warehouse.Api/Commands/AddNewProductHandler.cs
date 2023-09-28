@@ -20,15 +20,15 @@ public class AddNewProductHandler: IRequestHandler<AddNewProductCommand, Message
 
     public async Task<MessageResult<string>> Handle(AddNewProductCommand request, CancellationToken cancellationToken)
     {
-        var eventType = typeof(ProductCreatedEvent).AssemblyQualifiedName;
+        var eventType = typeof(ProductCreatedEventModel).AssemblyQualifiedName;
 
         if (string.IsNullOrWhiteSpace(eventType))
-            throw new ArgumentNullException(nameof(ProductCreatedEvent), "The specified type is not found");
+            throw new ArgumentNullException(nameof(ProductCreatedEventModel), "The specified type is not found");
 
-        var eventData = new BaseEvent()
+        var eventData = new EventModel()
         {
             Id = request.Id,
-            EventType = typeof(ProductCreatedEvent).AssemblyQualifiedName,
+            EventType = typeof(ProductCreatedEventModel).AssemblyQualifiedName,
             Payload = JsonSerializer.Serialize(request),
         };
         

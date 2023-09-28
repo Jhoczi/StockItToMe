@@ -18,4 +18,8 @@
       <PackageReference Include="MassTransit.Kafka" Version="8.1.0" />
     </ItemGroup>
 
+
+
+
+
 </Project>

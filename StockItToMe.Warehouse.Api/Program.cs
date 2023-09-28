@@ -1,12 +1,8 @@
 using MassTransit;
-using MassTransit.Transports.Fabric;
-using Microsoft.Extensions.Options;
 using Serilog;
-using StockItToMe.Common.Events;
-using StockItToMe.Core.Events;
 using StockItToMe.Core.Producers;
 using StockItToMe.Warehouse.Api.Middlewares;
-using StockItToMe.Warehouse.Infrastracture.Producers;
+using StockItToMe.Warehouse.Infrastructure.Producers;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -2,7 +2,7 @@
 using StockItToMe.Core.Events;
 using StockItToMe.Core.Producers;
 
-namespace StockItToMe.Warehouse.Infrastracture.Producers;
+namespace StockItToMe.Warehouse.Infrastructure.Producers;
 
 public class EventProducer : IEventProducer
 {
@@ -13,8 +13,8 @@ public class EventProducer : IEventProducer
         _publishEndpoint = publishEndpoint;
     }
 
-    public async Task Produce(BaseEvent eventData, CancellationToken cancellationToken)
+    public async Task Produce(EventModel eventModelData, CancellationToken cancellationToken)
     {
-        await _publishEndpoint.Publish(eventData, cancellationToken);
+        await _publishEndpoint.Publish(eventModelData, cancellationToken);
     }
 }

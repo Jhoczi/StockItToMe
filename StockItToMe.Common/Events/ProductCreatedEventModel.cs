@@ -3,7 +3,7 @@ using StockItToMe.Core.Events;
 
 namespace StockItToMe.Common.Events;
 
-public class ProductCreatedEvent : BaseEvent
+public class ProductCreatedEventModel : EventModel
 {
     // public string Author { get; set; }
     // // public ProductCreatedEvent() : base(nameof(ProductCreatedEvent))

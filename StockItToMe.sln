@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StockItToMe.Common", "Stock
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockItToMe.Common", "StockItToMe.Common\StockItToMe.Common.csproj", "{7D166E50-0177-4B5C-856E-6B3B48447C3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockItToMe.Warehouse.Infrastracture", "StockItToMe.Warehouse.Infrastracture\StockItToMe.Warehouse.Infrastracture.csproj", "{29A8FCF8-EF14-40FC-9F6E-CA63FC963EC6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockItToMe.Warehouse.Infrastructure", "StockItToMe.Warehouse.Infrastructure\StockItToMe.Warehouse.Infrastructure.csproj", "{29A8FCF8-EF14-40FC-9F6E-CA63FC963EC6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StockItToMe.Consumer", "StockItToMe.Consumer", "{E24EC2BD-CC77-4130-90AF-3E07DD595B08}"
 EndProject

@@ -7,8 +7,10 @@
         <RootNamespace>StickItToMe.Warehouse.Domain</RootNamespace>
     </PropertyGroup>
 
+
+
     <ItemGroup>
-      <Folder Include="Models" />
+      <ProjectReference Include="..\StockItToMe.Core\StockItToMe.Core.csproj" />
     </ItemGroup>
 
 </Project>

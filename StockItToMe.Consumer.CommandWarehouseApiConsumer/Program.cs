@@ -19,11 +19,11 @@ builder.ConfigureServices((hostingContext, services) =>
             hostingContext.Configuration.GetSection("MongoProviderSettings").GetSection("ConnectionStrings")["Warehouse"]);
         return mongoClient;
     });
-    services.AddSingleton<ICommandDataProvider<BaseEvent>, MongoProvider<BaseEvent>>(provider =>
-        new MongoProvider<BaseEvent>(
+    services.AddSingleton<ICommandDataProvider<EventModel>, MongoProvider<EventModel>>(provider =>
+        new MongoProvider<EventModel>(
             provider.GetRequiredService<IMongoClient>(),
             hostingContext.Configuration.GetSection("MongoProviderSettings").GetSection("DatabaseNames")["Warehouse"],
-            nameof(BaseEvent)
+            nameof(EventModel)
         ));
     
     services.AddMassTransit(x =>

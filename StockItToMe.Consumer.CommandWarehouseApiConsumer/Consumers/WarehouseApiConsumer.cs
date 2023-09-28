@@ -4,18 +4,18 @@ using StockItToMe.Core.Events;
 
 namespace StockItToMe.Consumer.CommandWarehouseApiConsumer.Consumers;
 
-public class WarehouseApiConsumer : IConsumer<BaseEvent>
+public class WarehouseApiConsumer : IConsumer<EventModel>
 {
     private readonly ILogger<WarehouseApiConsumer> _logger;
-    private readonly ICommandDataProvider<BaseEvent> _dataProvider;
+    private readonly ICommandDataProvider<EventModel> _dataProvider;
 
-    public WarehouseApiConsumer(ICommandDataProvider<BaseEvent> dataProvider, ILogger<WarehouseApiConsumer> logger)
+    public WarehouseApiConsumer(ICommandDataProvider<EventModel> dataProvider, ILogger<WarehouseApiConsumer> logger)
     {
         _dataProvider = dataProvider;
         _logger = logger;
     }
 
-    public async Task Consume(ConsumeContext<BaseEvent> context)
+    public async Task Consume(ConsumeContext<EventModel> context)
     {
         _logger.LogInformation($"Starting consuming message:{context.Message.Id}");
         await _dataProvider.Create(context.Message);

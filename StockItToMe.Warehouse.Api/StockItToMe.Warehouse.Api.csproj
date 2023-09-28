@@ -16,7 +16,7 @@
     <ItemGroup>
       <ProjectReference Include="..\StockItToMe.Common\StockItToMe.Common.csproj" />
       <ProjectReference Include="..\StockItToMe.Core\StockItToMe.Core.csproj" />
-      <ProjectReference Include="..\StockItToMe.Warehouse.Infrastracture\StockItToMe.Warehouse.Infrastracture.csproj" />
+      <ProjectReference Include="..\StockItToMe.Warehouse.Infrastructure\StockItToMe.Warehouse.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

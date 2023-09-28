@@ -4,5 +4,5 @@ namespace StockItToMe.Core.Producers;
 
 public interface IEventProducer
 {
-    Task Produce(BaseEvent eventData, CancellationToken cancellationToken);
+    Task Produce(EventModel eventModelData, CancellationToken cancellationToken);
 }
