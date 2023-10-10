@@ -9,9 +9,10 @@ public class PostAggregate : AggregateRoot
 
     public PostAggregate()
     {
+        
     }
 
-    public void Apply(EventModel eventModel)
+    public void Apply(DomainEvent domainEvent)
     {
         RaiseEvent(new()
         {

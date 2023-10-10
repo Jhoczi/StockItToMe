@@ -1,7 +1,7 @@
 ﻿using MassTransit;
 using MongoDB.Driver;
-using StockItToMe.Consumer.CommandWarehouseApiConsumer.Consumers;
-using StockItToMe.Consumer.CommandWarehouseApiConsumer.Infrastructure;
+using StockItToMe.Consumer.EventsConsumer.Consumers;
+using StockItToMe.Consumer.EventsConsumer.Infrastructure;
 using StockItToMe.Core.Entities;
 using StockItToMe.Core.Events;
 
@@ -19,11 +19,11 @@ builder.ConfigureServices((hostingContext, services) =>
             hostingContext.Configuration.GetSection("MongoProviderSettings").GetSection("ConnectionStrings")["Warehouse"]);
         return mongoClient;
     });
-    services.AddSingleton<ICommandDataProvider<EventModel>, MongoProvider<EventModel>>(provider =>
-        new MongoProvider<EventModel>(
+    services.AddSingleton<ICommandDataProvider<DomainEvent>, MongoProvider<DomainEvent>>(provider =>
+        new MongoProvider<DomainEvent>(
             provider.GetRequiredService<IMongoClient>(),
             hostingContext.Configuration.GetSection("MongoProviderSettings").GetSection("DatabaseNames")["Warehouse"],
-            nameof(EventModel)
+            nameof(DomainEvent)
         ));
     
     services.AddMassTransit(x =>
@@ -38,7 +38,7 @@ builder.ConfigureServices((hostingContext, services) =>
                 h.Password("password");
             });
         
-            cfg.ReceiveEndpoint("warehouse-api-events", e =>
+            cfg.ReceiveEndpoint("warehouse-api-events-messages", e =>
             {
                 e.ConfigureConsumer<WarehouseApiConsumer>(context);
             });

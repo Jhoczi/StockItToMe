@@ -1,7 +1,7 @@
 ﻿using MongoDB.Driver;
 using StockItToMe.Core.Entities;
 
-namespace StockItToMe.Consumer.CommandWarehouseApiConsumer.Infrastructure.Models;
+namespace StockItToMe.Consumer.EventsConsumer.Infrastructure.Models;
 
 public class MongoDeleteResult : IDeleteResult
 {

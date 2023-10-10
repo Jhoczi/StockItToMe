@@ -21,9 +21,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockItToMe.Warehouse.Infra
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StockItToMe.Consumer", "StockItToMe.Consumer", "{E24EC2BD-CC77-4130-90AF-3E07DD595B08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockItToMe.Consumer.CommandWarehouseApiConsumer", "StockItToMe.Consumer.CommandWarehouseApiConsumer\StockItToMe.Consumer.CommandWarehouseApiConsumer.csproj", "{E97E4B78-B7D6-4122-B860-3B7BACF1F9E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockItToMe.Consumer.EventsConsumer", "StockItToMe.Consumer.EventsConsumer\StockItToMe.Consumer.EventsConsumer.csproj", "{E97E4B78-B7D6-4122-B860-3B7BACF1F9E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockItToMe.Consumer.CommandWarehouseApiConsumer.Infrastructure", "StockItToMe.Consumer.CommandWarehouseApiConsumer.Infrastructure\StockItToMe.Consumer.CommandWarehouseApiConsumer.Infrastructure.csproj", "{D085BD68-52F7-440F-A71F-E02FFB593B76}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockItToMe.Consumer.EventsConsumer.Infrastructure", "StockItToMe.Consumer.EventsConsumer.Infrastructure\StockItToMe.Consumer.EventsConsumer.Infrastructure.csproj", "{D085BD68-52F7-440F-A71F-E02FFB593B76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

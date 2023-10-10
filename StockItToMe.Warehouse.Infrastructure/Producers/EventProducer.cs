@@ -1,5 +1,5 @@
 ﻿using MassTransit;
-using StockItToMe.Core.Events;
+using StockItToMe.Core.Messages;
 using StockItToMe.Core.Producers;
 
 namespace StockItToMe.Warehouse.Infrastructure.Producers;
@@ -13,8 +13,8 @@ public class EventProducer : IEventProducer
         _publishEndpoint = publishEndpoint;
     }
 
-    public async Task Produce(EventModel eventModelData, CancellationToken cancellationToken)
+    public async Task Produce(EventMessage message, CancellationToken cancellationToken)
     {
-        await _publishEndpoint.Publish(eventModelData, cancellationToken);
+        await _publishEndpoint.Publish(message, cancellationToken);
     }
 }

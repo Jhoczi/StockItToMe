@@ -3,7 +3,7 @@ using StockItToMe.Core.Domain;
 using StockItToMe.Core.Events;
 using StockItToMe.Core.Exceptions;
 
-namespace StockItToMe.Warehouse.Infrastracture.Stores;
+namespace StockItToMe.Warehouse.Infrastructure.Stores;
 
 public class EventStore : IEventStore
 {
@@ -14,7 +14,7 @@ public class EventStore : IEventStore
         _eventStoreRepository = eventStoreRepository;
     }
 
-    public async Task SaveEvents(Guid aggregateId, IEnumerable<EventModel> events, int expectedVersion)
+    public async Task SaveEvents(Guid aggregateId, IEnumerable<DomainEvent> events, int expectedVersion)
     {
         var eventStream = await _eventStoreRepository.FindByAggregateId(aggregateId);
 
@@ -34,7 +34,7 @@ public class EventStore : IEventStore
         }
     }
 
-    public async Task<List<EventModel>> GetEvents(Guid aggregateId)
+    public async Task<List<DomainEvent>> GetEvents(Guid aggregateId)
     {
         var eventStream = await _eventStoreRepository.FindByAggregateId(aggregateId);
         

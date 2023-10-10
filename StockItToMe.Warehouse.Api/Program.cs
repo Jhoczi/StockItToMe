@@ -1,8 +1,14 @@
 using MassTransit;
+using MongoDB.Driver;
 using Serilog;
+using StockItToMe.Core.Domain;
+using StockItToMe.Core.Entities;
+using StockItToMe.Core.Events;
 using StockItToMe.Core.Producers;
 using StockItToMe.Warehouse.Api.Middlewares;
 using StockItToMe.Warehouse.Infrastructure.Producers;
+using StockItToMe.Warehouse.Infrastructure.Providers;
+using StockItToMe.Warehouse.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +20,20 @@ builder.Services.AddSerilog((hostingContext, loggerConfiguration) =>
         .WriteTo.Console();
 });
 
-builder.Services.Configure<KafkaSettings>(builder.Configuration.GetSection(nameof(KafkaSettings)));
+//builder.Services.Configure<KafkaSettings>(builder.Configuration.GetSection(nameof(KafkaSettings)));
+
+builder.Services.AddSingleton<IMongoClient>(_ =>
+{
+    var mongoClient = new MongoClient(
+        builder.Configuration.GetSection("MongoProviderSettings").GetSection("ConnectionStrings")["Warehouse"]);
+    return mongoClient;
+});
+builder.Services.AddSingleton<IQueryDataProvider<DomainEvent>, MongoProvider<DomainEvent>>(provider =>
+    new MongoProvider<DomainEvent>(
+        provider.GetRequiredService<IMongoClient>(),
+        builder.Configuration.GetSection("MongoProviderSettings").GetSection("DatabaseNames")["Warehouse"],
+        nameof(DomainEvent)
+    ));
 
 builder.Services.AddMassTransit(x =>
 {
@@ -59,6 +78,7 @@ builder.Services.AddMassTransit(x =>
     // });
 });
 
+builder.Services.AddTransient<IEventStoreRepository, EventStoreRepository>();
 builder.Services.AddTransient<IEventProducer, EventProducer>();
 
 builder.Services.AddControllers();

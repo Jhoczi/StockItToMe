@@ -10,12 +10,10 @@ namespace StockItToMe.Warehouse.Api.Controllers;
 [Route("api/v1/[controller]")]
 public class ProductController : ControllerBase 
 {
-    private readonly ILogger<ProductController> _logger;
     private readonly IMediator _mediator;
     
-    public ProductController(ILogger<ProductController> logger, IMediator mediator)
+    public ProductController(IMediator mediator)
     {
-        _logger = logger;
         _mediator = mediator;
     }
 
@@ -28,7 +26,8 @@ public class ProductController : ControllerBase
         
         return StatusCode(StatusCodes.Status201Created, new CreateProductResponse()
         {
-            Message = commandResult.Message
+            Message = commandResult.Message,
+            Id = command.Id
         });
     }
 }

@@ -1,6 +1,4 @@
-﻿using StockItToMe.Core.Commands;
-
-namespace StockItToMe.Core.Exceptions;
+﻿namespace StockItToMe.Core.Exceptions;
 
 public class AggregateNotFoundException : Exception
 {

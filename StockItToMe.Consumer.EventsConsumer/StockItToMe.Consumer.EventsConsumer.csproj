@@ -5,6 +5,7 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>StockItToMe.Consumer.EventsConsumer</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,7 +20,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\StockItToMe.Common\StockItToMe.Common.csproj" />
-      <ProjectReference Include="..\StockItToMe.Consumer.CommandWarehouseApiConsumer.Infrastructure\StockItToMe.Consumer.CommandWarehouseApiConsumer.Infrastructure.csproj" />
+      <ProjectReference Include="..\StockItToMe.Consumer.EventsConsumer.Infrastructure\StockItToMe.Consumer.EventsConsumer.Infrastructure.csproj" />
       <ProjectReference Include="..\StockItToMe.Core\StockItToMe.Core.csproj" />
     </ItemGroup>
 

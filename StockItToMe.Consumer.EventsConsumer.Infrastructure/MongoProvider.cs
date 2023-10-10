@@ -1,9 +1,9 @@
 ﻿using System.Linq.Expressions;
 using MongoDB.Driver;
-using StockItToMe.Consumer.CommandWarehouseApiConsumer.Infrastructure.Models;
+using StockItToMe.Consumer.EventsConsumer.Infrastructure.Models;
 using StockItToMe.Core.Entities;
 
-namespace StockItToMe.Consumer.CommandWarehouseApiConsumer.Infrastructure;
+namespace StockItToMe.Consumer.EventsConsumer.Infrastructure;
 
 public class MongoProvider<TEntity> : ICommandDataProvider<TEntity> where TEntity : IEntity
 {
@@ -25,6 +25,8 @@ public class MongoProvider<TEntity> : ICommandDataProvider<TEntity> where TEntit
         await _collection.InsertOneAsync(entity);
         return entity;
     }
+    
+    
 
     public async Task<TEntity> Update(TEntity entity)
     {
